@@ -1,0 +1,20 @@
+@import './reset.scss';
+
+// 滚动条样式
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: $base-menu-background-color;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: black;
+  border: 1px solid $base-menu-background-color;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  cursor: pointer;
+}
