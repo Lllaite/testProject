@@ -1,12 +1,18 @@
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
+import useUserStore from '@/store/modules/user'
 const request = axios.create({
   baseURL: import.meta.env.VITE_APP_BASE_API,
   timeout: 5000,
 })
 
+// 请求拦截器
 request.interceptors.request.use(
   (config) => {
+    const userStore = useUserStore()
+    if (userStore.token) {
+      config.headers.token = userStore.token
+    }
     return config
   },
   (error) => {
@@ -14,6 +20,7 @@ request.interceptors.request.use(
   },
 )
 
+// 响应拦截器
 request.interceptors.response.use(
   (response) => {
     if (response.status === 200) {

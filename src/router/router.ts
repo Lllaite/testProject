@@ -13,7 +13,6 @@ export const routes = [
     component: () => import('@/views/layout/index.vue'),
     name: 'layout',
     meta: {
-      title: 'layout',
       hidden: false,
     },
     redirect: '/home',
@@ -30,16 +29,6 @@ export const routes = [
     ],
   },
   {
-    path: '/screen',
-    component: () => import('@/views/screen/index.vue'),
-    name: 'screen',
-    meta: {
-      title: '大屏',
-      hidden: false,
-      icon: 'Platform',
-    },
-  },
-  {
     path: '/acl',
     component: () => import('@/views/layout/index.vue'),
     name: 'acl',
@@ -48,6 +37,7 @@ export const routes = [
       hidden: false,
       icon: 'Lock',
     },
+    redirect: '/acl/user',
     children: [
       {
         path: '/acl/user',
@@ -133,6 +123,16 @@ export const routes = [
         },
       },
     ],
+  },
+  {
+    path: '/screen',
+    component: () => import('@/views/screen/index.vue'),
+    name: 'screen',
+    meta: {
+      title: '大屏',
+      hidden: false,
+      icon: 'Platform',
+    },
   },
   {
     path: '/404',

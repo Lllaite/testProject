@@ -1,6 +1,6 @@
 <template>
   <div class="main_content">
-    主页111111
+    {{ userStore.username }}
     <el-icon>
       <Search />
     </el-icon>
@@ -10,7 +10,16 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup lang="ts">
+import useUserStore from '@/store/modules/user'
+import { onMounted } from 'vue'
+
+const userStore = useUserStore()
+onMounted(() => {
+  userStore.getUserInfo()
+  console.log('userStore', userStore)
+})
+</script>
 
 <style lang="scss" scoped>
 .main_content {
