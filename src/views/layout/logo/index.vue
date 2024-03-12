@@ -1,9 +1,16 @@
 <template>
-  <div v-if="setting.logoHiddern" class="logo_title">{{ setting.title }}</div>
+  <div v-if="setting.logoHiddern" class="logo_title">
+    <template v-if="!layoutSettingStore.fold">
+      {{ setting.title }}
+    </template>
+  </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" name="logo">
 import setting from '@/setting'
+import useLayoutSettingStore from '@/store/modules/setting'
+
+const layoutSettingStore = useLayoutSettingStore()
 </script>
 
 <style lang="scss" scoped>
